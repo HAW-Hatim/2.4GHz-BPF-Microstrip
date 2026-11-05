@@ -1,7 +1,6 @@
 # 2.4 GHz Microstrip Bandpass Filter Design Project
 
 Design, simulation, and fabrication of a microstrip hairpin bandpass filter.
-Course project for High-Frequency Electronics at HAW Hamburg.
 
 Design and simulation were done with AWR Microwave Office (Axiem 2.5D MoM).
 Fabrication was done at JLCPCB.
@@ -33,7 +32,7 @@ connectors for measurement, the required tapers were also included in the simula
 |---|---|
 | Center frequency f<sub>c</sub> | 2.4 GHz |
 | 3 dB bandwidth | 580 MHz (2110–2690 MHz) |
-| S<sub>11</sub> passband | < −15 dB between 2220–2640 MHz |
+| S<sub>11</sub> passband | < −15 dB (2220–2640 MHz) |
 | S<sub>21</sub> passband | > −4.7 dB, peak at −1.7 dB |
 
 
@@ -53,7 +52,7 @@ connectors for measurement, the required tapers were also included in the simula
 ## Measurement
 
 Measurements were performed with a PicoVNA.
-**Note:** The provided Touchstone files contain raw, uncalibrated data.
+
 
 <p align="center">
   <img src="images/fabricated_filter.jpg" alt="Fabricated filter" width="60%">
@@ -61,10 +60,10 @@ Measurements were performed with a PicoVNA.
 
 | Key Characteristic | Measurement |
 |---|---|
-| Center frequency f<sub>c</sub> | 2.303 GHz |
-| 3 dB bandwidth | 526 MHz |
-| S<sub>11</sub> passband | < −15 dB |
-| S<sub>21</sub> passband | > −3 dB |
+| Center frequency f<sub>c</sub> | 2.2835 GHz |
+| 3 dB bandwidth | 575 MHz |
+| S<sub>11</sub> passband | < −10 dB ( 1987 MHz - 2515 MHz)|
+| S<sub>21</sub> passband | > −3 dB (2050 MHz - 2520 MHz), peak of -1.632 dB |
 
 
 <p align="center">
@@ -81,24 +80,23 @@ Measurements were performed with a PicoVNA.
 
 ## Differences Between Simulation and Measurement
 
-As expected, the measurements differ from the simulation. A shift in center
-frequency, a reduction in bandwidth, and worse S<sub>11</sub> can be observed.
-Worse S<sub>11</sub> refers to more reflection at the input port.
+As expected, the measurements differ from the simulation but the results were surprisingly good. A shift in center
+frequency, a reduction in bandwidth, and worse S<sub>11</sub> can be observed. 
 
-The shift from 2.4 GHz to 2.303 GHz indicates that the actual FR4 permittivity
-was slightly higher than the simulated value (higher ε<sub>r</sub> → shorter
+
+The shift from 2.4 GHz to 2.2835 GHz indicates that the actual FR4 permittivity
+was higher than the simulated value (higher ε<sub>r</sub> → shorter
 wavelength → lower resonant frequency). FR4 is inexpensive, but its dielectric
 constant varies significantly between batches and even across a single PCB.
 
-A measured peak S<sub>21</sub> of −1.8 dB was reached, matching the simulation
-well.
+A measured peak S<sub>21</sub> of −1.632 dB was reached, matching the simulation
+well and indicating that the assumed loss tangent is close to reality.
 
-The raw (uncalibrated) Touchstone data shows S<sub>11</sub> values above 0 dB
-around 3.5 GHz and 1.2 GHz. These are measurement artifacts from the
-uncalibrated setup (cables, connectors) rather than physical behavior. The
-connector is rated only from DC to 3 GHz, and higher-order modes likely
-contribute near 3.5 GHz.
-
+In the measurments a dip of ~ -63 dB can be observed at ~ 3.5 Ghz. A similar dip of this depth can not be observed in the measurments.
+Reasons for this could be the following: 
+1. Resonance effects from the SMA connector (rated for DC-3GHz)
+2. Measurment floor reached masking real dip
+3. Non-ideal perfect calibration (Indication for this is a positive S<sub>11</sub> measurment starting from ~ 3.5 Ghz)
 
 
 
@@ -108,8 +106,8 @@ contribute near 3.5 GHz.
 This project was a very good learning experience and yielded good results for a
 first attempt. Even though the simulation used only 2.5D MoM, the resulting
 S<sub>11</sub>/S<sub>21</sub> parameters are good enough for use in a real design,
-with S<sub>21</sub> as low as −1.8 dB. Manufacturing effects such as the shifted
-center frequency became visible.
+with S<sub>21</sub> as low as −1.6 dB. Manufacturing effects such as the shifted
+center frequency became visible. 
 
 For future iterations, a more suitable substrate should be chosen, and a small
 test strip for measuring the relative permittivity should be included on the PCB.
