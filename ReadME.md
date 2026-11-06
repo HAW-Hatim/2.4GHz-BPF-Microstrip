@@ -80,26 +80,18 @@ Measurements were performed with a PicoVNA.
 
 ## Differences Between Simulation and Measurement
 
-As expected, the measurements differ from the simulation but the results were surprisingly good. A shift in center
-frequency, a reduction in bandwidth, and worse S<sub>11</sub> can be observed. 
+As expected, the measurements differ from the simulation, but the results were surprisingly good. A shift in center frequency and worse S<sub>11</sub> can be observed.
 
+The shift from 2.4 GHz to 2.2835 GHz indicates that the actual FR4 permittivity was higher than the simulated value (higher ε<sub>r</sub> → shorter wavelength → lower resonant frequency). FR4 is inexpensive, but its dielectric constant varies significantly between batches and even across a single PCB.
 
-The shift from 2.4 GHz to 2.2835 GHz indicates that the actual FR4 permittivity
-was higher than the simulated value (higher ε<sub>r</sub> → shorter
-wavelength → lower resonant frequency). FR4 is inexpensive, but its dielectric
-constant varies significantly between batches and even across a single PCB.
+A measured peak S<sub>21</sub> of −1.632 dB was reached, matching the simulated −1.7 dB remarkably well and validating the assumed loss tangent. Furthermore, the measured 3 dB bandwidth is only 5 MHz smaller than the simulation (575 MHz vs. 580 MHz), which is a great result.
 
-A measured peak S<sub>21</sub> of −1.632 dB was reached, matching the simulation
-well and indicating that the assumed loss tangent is close to reality.
+In the simulation, a deep dip of ~ -63 dB can be observed at ~ 3.5 GHz. A similar dip of this depth cannot be observed in the measurements. Reasons for this could be:
+1. Resonance effects from the SMA connector (rated for DC-3GHz).
+2. The measurement noise floor masking the real dip.
+3. Non-ideal calibration (An indication for this is a positive S<sub>11</sub> measurement starting from ~ 3.5 GHz).
 
-In the measurments a dip of ~ -63 dB can be observed at ~ 3.5 Ghz. A similar dip of this depth can not be observed in the measurments.
-Reasons for this could be the following: 
-1. Resonance effects from the SMA connector (rated for DC-3GHz)
-2. Measurment floor reached masking real dip
-3. Non-ideal perfect calibration (Indication for this is a positive S<sub>11</sub> measurment starting from ~ 3.5 Ghz)
-
-
-
+The return loss (S<sub>11</sub>) is worse than in simulation, and the response appears inverted in the measurements even though the filter is geometrically symmetrical. This is very likely due to the fact that the SMA connectors were not modeled in the simulation. It could also indicate that the taper to the connector is not as ideal as simulated, resulting in a worse impedence match at the desired frequencies.
 
 ## Conclusion
 
