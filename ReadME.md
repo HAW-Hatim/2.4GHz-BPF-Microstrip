@@ -67,15 +67,15 @@ Measurements were performed with a PicoVNA.
 
 
 <p align="center">
-  <img src="images/s_parameters_measurement.jpg" alt="Simulated S-parameters" width="80%">
+  <img src="images/s_parameters_measurement.png" alt="Simulated S-parameters" width="80%">
 </p>
 
 <p align="center">
-  <img src="images/s11_comparison.jpg" alt="Simulated S-parameters" width="80%">
+  <img src="images/s11_comparison.png" alt="Simulated S-parameters" width="80%">
 </p>
 
 <p align="center">
-  <img src="images/s21_comparison.jpg" alt="Simulated S-parameters" width="80%">
+  <img src="images/s21_comparison.png" alt="Simulated S-parameters" width="80%">
 </p>
 
 ## Differences Between Simulation and Measurement
